@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
@@ -26,9 +27,26 @@ class HomeScreen extends StatelessWidget {
         future: webtoons,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return const Text("There is data!");
+            return ScrollConfiguration(
+              behavior: ScrollConfiguration.of(context).copyWith(
+                dragDevices: {
+                  PointerDeviceKind.mouse,
+                },
+              ),
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  final webtoon = snapshot.data![index];
+                  return Text(webtoon.title);
+                },
+                separatorBuilder: (context, index) => const SizedBox(width: 20),
+              ),
+            );
           }
-          return const Text('Loading....');
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
