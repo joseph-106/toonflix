@@ -17,6 +17,7 @@ class DetailScreen extends StatelessWidget {
         elevation: 2,
         backgroundColor: Colors.white,
         foregroundColor: Colors.green,
+        centerTitle: true,
         title: Text(
           title,
           style: const TextStyle(
