@@ -33,6 +33,14 @@ class Webtoon extends StatelessWidget {
             pageBuilder: (context, anmation, secondaryAnimation) =>
                 DetailScreen(id: id, title: title, thumb: thumb),
           ),
+          /* MaterialPageRoute(
+            builder: (context) => DetailScreen(
+              title: title,
+              thumb: thumb,
+              id: id,
+            ),
+            fullscreenDialog: true,
+          ), */
         );
       },
       child: Column(
