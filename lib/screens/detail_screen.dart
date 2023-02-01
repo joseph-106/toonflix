@@ -43,17 +43,17 @@ class _DetailScreenState extends State<DetailScreen> {
           ),
         ),
       ),
-      body: Hero(
-        tag: widget.id,
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
+      body: Column(
+        children: [
+          const SizedBox(
+            height: 50,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Hero(
+                tag: widget.id,
+                child: Container(
                   width: 250,
                   clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
@@ -68,42 +68,42 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   child: Image.network(widget.thumb),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            FutureBuilder(
-              future: webtoon,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 50,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          snapshot.data!.about,
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Text(
-                          '${snapshot.data!.genre} / ${snapshot.data!.age}',
-                          style: const TextStyle(fontSize: 16),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-                return const Text("...");
-              },
-            )
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 25,
+          ),
+          FutureBuilder(
+            future: webtoon,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 50,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        snapshot.data!.about,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        '${snapshot.data!.genre} / ${snapshot.data!.age}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
+                );
+              }
+              return const Text("...");
+            },
+          )
+        ],
       ),
     );
   }
