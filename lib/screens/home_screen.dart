@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:toonflix/models/webtoon_model.dart';
 import 'package:toonflix/services/api_service.dart';
@@ -29,20 +28,13 @@ class HomeScreen extends StatelessWidget {
         future: webtoons,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                dragDevices: {
-                  PointerDeviceKind.mouse,
-                },
-              ),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  Expanded(child: makeList(snapshot))
-                ],
-              ),
+            return Column(
+              children: [
+                const SizedBox(
+                  height: 50,
+                ),
+                Expanded(child: makeList(snapshot))
+              ],
             );
           }
 
